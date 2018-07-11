@@ -1,0 +1,10 @@
+Carpet,2.25,2.10
+Laminate,1.75,2.10
+Tile,3.50,4.15
+Wood,5.15,4.75
+Sheet Plastic,2.00,0.50
+Reclaimed Wood,0.00,49.99
+Linoleum,7.50,5.00
+Marble Tile,15.00,25.00
+Shag Carpet,10.00,15.50
+Bamboo,35.00,12.50

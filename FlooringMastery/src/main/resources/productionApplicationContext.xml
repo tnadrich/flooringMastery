@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop  
+          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <!-- Bean definitions go here -->
+    <bean id="userIO" class="com.sg.flooringmastery.ui.UserIOConsoleImpl" />
+    
+    <bean id="view" class="com.sg.flooringmastery.ui.FlooringMasteryView">
+        <constructor-arg ref="userIO" />
+    </bean>
+    
+    <bean id="ordersDao" class="com.sg.flooringmastery.dao.FlooringMasteryOrdersDaoFileImpl" />
+    
+    <bean id="taxesDao" class="com.sg.flooringmastery.dao.FlooringMasteryTaxesDaoFileImpl" /> 
+    
+    <bean id="productsDao" class="com.sg.flooringmastery.dao.FlooringMasteryProductsDaoFileImpl" />
+    
+    <bean id="serviceLayer" class="com.sg.flooringmastery.service.FlooringMasteryServiceLayerImpl" >
+        <constructor-arg ref="ordersDao"/>
+        <constructor-arg ref="taxesDao"/>
+        <constructor-arg ref="productsDao"/>
+        <property name="bootConfig" value="${bootConfig}" />
+        
+    </bean>
+    
+    <bean id="controller" class="com.sg.flooringmastery.controller.FlooringMasteryController" >
+        <constructor-arg ref="serviceLayer"/>
+        <constructor-arg ref="view"/>
+    </bean>
+    
+    <context:property-placeholder location="classpath:flooringMasteryAdminConfig.properties" />
+    
+</beans>

@@ -1,0 +1,4 @@
+com\sg\flooringmastery\dao\FlooringMasteryOrdersDaoTest.class
+com\sg\flooringmastery\service\FlooringMasteryServiceLayerTest.class
+com\sg\flooringmastery\dao\FlooringMasteryProductsDaoTest.class
+com\sg\flooringmastery\dao\FlooringMasteryTaxesDaoTest.class
